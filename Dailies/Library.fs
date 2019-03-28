@@ -6,8 +6,6 @@ module Daily =
         1
 
     let SumListTuplesEqualK (numbers : List<int>) (k : int) =
-        let numbersMinusK = List.collect (fun x -> [abs(x - k)]) numbers
+        let tuplesSummed = List.collect (fun x -> List.collect (fun y -> [y + x]) numbers) numbers
 
-        let intersection = Set.intersect (Set.ofList numbers) (Set.ofList numbersMinusK)
-
-        Operators.not intersection.IsEmpty
+        List.contains k tuplesSummed
