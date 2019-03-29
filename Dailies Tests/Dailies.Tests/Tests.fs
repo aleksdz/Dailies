@@ -25,3 +25,19 @@ let ``Any List Tuple Sum Equals K`` (numbers : Collections.Generic.List<int>) (k
     let doesSumEqualK = Daily.SumListTuplesEqualK numbers k
 
     Assert.Equal(expectedResult, doesSumEqualK)
+
+// Given a list of numbers, create a new list where every element is multiple of all elements bar itself.
+let listProductsTestCases =
+    seq {
+        yield [| [1;2;3;4;5]    :> obj; [120;60;40;30;24]  :> obj|]
+        yield [| [3;2;1]        :> obj; [2;3;6]            :> obj|]
+        yield [| [0;1;2;3]      :> obj; [6;0;0;0]          :> obj|]
+        yield [| [3;2;1;2]      :> obj; [4;6;12;6]         :> obj|]
+    }
+
+[<Theory>]
+[<MemberData("listProductsTestCases")>]
+let ``List products`` (numbers : int list) (expectedResult : int list) =
+    let newList = Daily.ListProducts numbers
+
+    Assert.True((expectedResult = newList))
