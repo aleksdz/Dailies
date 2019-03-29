@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Dailies\Dailies.fsproj" />
+    <ProjectReference Include="..\Dailies\Dailies.fsproj" />
   </ItemGroup>
 </Project>
