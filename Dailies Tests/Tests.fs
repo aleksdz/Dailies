@@ -11,7 +11,7 @@ let ``First Test`` () =
 // Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
 let listTupleTestCases =
     seq {
-        yield [| Collections.Generic.List([10;15;3;7]) :> obj; 17 :> obj; true    :> obj|]
+        yield [| Collections.Generic.List([10;15;3;7]) :> obj; 17 :> obj; false   :> obj|]
         yield [| Collections.Generic.List([10;15;3;7]) :> obj; 16 :> obj; false   :> obj|]
         yield [| Collections.Generic.List([1;2;3;4])   :> obj; 3  :> obj; true    :> obj|]
         yield [| Collections.Generic.List([1;2;3;4])   :> obj; 1  :> obj; false   :> obj|]
