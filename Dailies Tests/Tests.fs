@@ -43,8 +43,8 @@ let ``List products`` (numbers : int list) (expectedResult : int list) =
 
     Assert.True((expectedResult = newList))
 
-// Given a list of numbers, find lowest missing integer in place
-let listLowestMissingInteger =
+// Given a list of numbers, find lowest missing natural in place
+let listLowestMissingNatural =
     seq {
         yield [| [|3;4;-1;1|]        :> obj; 2  :> obj|]
         yield [| [|1;2;0|]           :> obj; 3  :> obj|]
@@ -55,8 +55,8 @@ let listLowestMissingInteger =
     }
 
 [<Theory>]
-[<MemberData("listLowestMissingInteger")>]
-let ``Lowest Missing Integer`` (numbers : int array) (expectedResult : int) =
+[<MemberData("listLowestMissingNatural")>]
+let ``Lowest Missing Natural`` (numbers : int array) (expectedResult : int) =
     let result = Daily.LowestMissingNatural numbers
 
     Assert.Equal(expectedResult, result)

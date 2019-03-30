@@ -40,8 +40,8 @@ module Daily =
                 index <- index + 1
             else index <- index + 1
 
-        let mutable value = 0
+        let mutable index = 0
         for element in numbers do
-            if element = (value + 1) then value <- value + 1
+            if element = (index + 1) then index <- index + 1
 
-        value + 1
+        index + 1
