@@ -15,10 +15,9 @@ module Daily =
         let rec products productList index =
             match productList with
             | [_] -> []
-            | items -> List.Cons ([index * items.Head], (products items.Tail (index * productList.Head)))
+            | items -> List.Cons ([index * items.Head], (products items.Tail (index * items.Head)))
 
         let leftProducts = List.Cons (1, (List.collect (fun x -> x) (products numbers 1)))
         let rightProducts = List.rev (List.Cons (1, (List.collect (fun x -> x) (products (List.rev numbers) 1))))
 
         List.collect (fun (x, y) -> [x * y]) (List.zip leftProducts rightProducts)
-
