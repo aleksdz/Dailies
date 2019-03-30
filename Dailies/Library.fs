@@ -7,9 +7,13 @@ module Daily =
     let FirstSolution () =
         1
 
-    let SumListTuplesEqualK (numbers : List<int>) (k : int) =
+    let SumListTuplesEqualK (numbers : System.Collections.Generic.List<int>) (k : int) =
         let hashset = HashSet numbers 
-        hashset.Any(fun element -> hashset.Contains(k - element))
+        hashset.Any(fun element -> 
+                        hashset.Contains(k - element) && 
+                        if element = k/2 then 
+                           numbers.Where(fun x -> x = element).Count () > 2 
+                        else true)
 
     let ListProducts (numbers : int list) =
         let rec products productList temporaryValue =
@@ -22,7 +26,7 @@ module Daily =
 
         List.collect (fun (x, y) -> [x * y]) (List.zip leftProducts rightProducts)
 
-    let LowestMissingInteger (numbers : int array) =
+    let LowestMissingNatural (numbers : int array) =
         let mutable index = 0
         for element in numbers do
             if element < 0 then numbers.[index] <- FSharp.Core.int.MaxValue

@@ -15,6 +15,7 @@ let listTupleTestCases =
         yield [| Collections.Generic.List([10;15;3;7]) :> obj; 16 :> obj; false :> obj|]
         yield [| Collections.Generic.List([1;2;3;4])   :> obj; 3  :> obj; true  :> obj|]
         yield [| Collections.Generic.List([1;2;3;4])   :> obj; 1  :> obj; false :> obj|]
+        yield [| Collections.Generic.List([4;2;3;4])   :> obj; 4  :> obj; false :> obj|]
         yield [| Collections.Generic.List([0;0;0;0])   :> obj; 0  :> obj; true  :> obj|]
         yield [| Collections.Generic.List([12312314;56754652;324356;85735246])  :> obj; 16   :> obj; false   :> obj|]
     }
@@ -56,6 +57,6 @@ let listLowestMissingInteger =
 [<Theory>]
 [<MemberData("listLowestMissingInteger")>]
 let ``Lowest Missing Integer`` (numbers : int array) (expectedResult : int) =
-    let result = Daily.LowestMissingInteger numbers
+    let result = Daily.LowestMissingNatural numbers
 
     Assert.Equal(expectedResult, result)
