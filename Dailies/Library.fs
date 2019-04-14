@@ -26,22 +26,20 @@ module Daily =
 
         List.collect (fun (x, y) -> [x * y]) (List.zip leftProducts rightProducts)
 
+
     let LowestMissingNatural (numbers : int array) =
-        let mutable index = 0
-        for element in numbers do
-            if element < 0 then numbers.[index] <- FSharp.Core.int.MaxValue
-            if element < numbers.Length && element > 0 then
-                let temp = numbers.[element]
-                if index < element then
-                    numbers.[element] <- (max element temp)
-                    numbers.[index] <- (min element temp)
-                else numbers.[element] <- (min element temp)
-                     numbers.[index] <- (max element temp)
-                index <- index + 1
-            else index <- index + 1
+        for number, index in Seq.zip numbers [0 .. numbers.Length - 1] do
+            if number < 0 then
+                numbers.[index] <- Core.int.MaxValue
+            elif number < numbers.Length then
+                let x = numbers.[number]
+                let i = min index number
+                let j = max index number
+                numbers.[i] <- min number x
+                numbers.[j] <- max number x
 
-        let mutable index = 0
-        for element in numbers do
-            if element = (index + 1) then index <- index + 1
-
-        index + 1
+        numbers
+        |> Seq.fold
+            (fun index number -> if number = (index + 1) then index + 1 else index)
+            0
+        |> ((+)1)
